@@ -1,40 +1,29 @@
 #include "monty.h"
+global_t global;
 
 int main(int argc, char *argv[])
 {
-	/*instruction_t command[]= {
-		{"push", push},
-		{"pall", print_all},
-		{"pint", print_int},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nope", nope},
-		{NULL, NULL}
-	};*/
-
-	ssize_t file, read_file;
-	char txt[100];
+	FILE *file;
+	stack_t *stack;
 
 	if (argc != 2)
 	{
-		printf("USAGE : monty file\n");
+		fprintf(stderr,"USAGE : monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
 	if (argv[1] == NULL)
 		exit (EXIT_FAILURE);
 
-	file = open(argv[1], O_RDONLY);
+	file = fopen(argv[1], "r");
 
-	if (file == -1)
+	if (file == NULL)
 	{
-		printf("Error: Can't open file %s\n", argv[0]);
+		fprintf(stderr,"Error: Can't open file %s\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
 
-	read_file = read(file, txt, sizeof(argv[1]));
+	find_file(file, &stack);
 
-	if (read_file == -1)
-		exit(EXIT_FAILURE);
+	return(0);
 }

@@ -1,34 +1,61 @@
 #include "monty.h"
 /**
  * push - for push stack
- * @stack_file: double pointer
- * @number: interger
+ * @stack_file: header of stack
+ * @counter_line: number of line
  * Return : nothing
  */
-void push(stack_t ** stack_file, unsigned int number)
+void push(stack_t **stack_file, unsigned int counter_line)
 {
 	stack_t *new_node;
-
-	if (isdigit((int)number) != 0)
-	{
-		printf("L<line_number>: unknown instruction <opcode>");
-		exit(EXIT_FAILURE);
-	}
+	char *value;
+	int data;
 
 	new_node = malloc(sizeof(stack_t));
 
 	if (new_node == NULL)
 	{
-		printf("Error : malloc failed\n");
+		free(new_node);
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
-	new_node->n = number;
+	value = strtok(NULL, " \n\t\r");
+	data = _ferror(value, counter_line);
+	new_node->n = data;
 	new_node->prev = NULL;
+	if (*stack_file == NULL)
+	{
+		*stack_file = new_node;
+		new_node->next = NULL;
+		return;
+	}
+
+	printf("check value = %d\n", (*stack_file)->n);
+
+	(*stack_file)->prev = new_node;
 	new_node->next = *stack_file;
-
-	if (*stack_file != NULL)
-		(*stack_file)->prev = new_node;
-
 	*stack_file = new_node;
+}
+
+/**
+ * pall - Print All stack
+ * @stack: Addres of first element in stack
+ * @counter_line: Number of actual line
+ */
+void pall(stack_t **stack, unsigned int counter_line)
+{
+	stack_t *tmp = NULL;
+
+	(void)counter_line;
+
+	if (!stack || !(*stack))
+		return;
+
+	tmp = *stack;
+	while (tmp)
+	{
+		printf("%d\n", tmp->n);
+		tmp = tmp->next;
+	}
 }

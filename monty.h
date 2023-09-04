@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <ctype.h>
+#include <string.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -35,7 +36,27 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct var_global - structure with the first addres of elements
+ * @first: Pointer to stack
+ * @buffer: The buffer
+ * @file: The file descriptor
+ */
+typedef struct var_global
+{
+        stack_t **first;
+        char *buffer;
+        FILE *file;
+} global_t;
+extern global_t global;
+
 int main(int argc, char *argv[]);
-void push(stack_t ** stack_file, unsigned int number);
+void find_file(FILE *file, stack_t **stack);
+void execute_cmd(stack_t **stack, unsigned int counter_line, char *command);
+int _ferror(char *value, unsigned int counter_line);
+
+/* Command functions */
+void push(stack_t **stack_file, unsigned int number);
+void pall(stack_t **stack, unsigned int counter_line);
 
 #endif /* MONTY_H */
