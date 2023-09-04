@@ -36,6 +36,6 @@ typedef struct instruction_s
 } instruction_t;
 
 int main(int argc, char *argv[]);
-void *push(stack_t ** stack_file, unsigned int number);
+void push(stack_t ** stack_file, unsigned int number);
 
 #endif /* MONTY_H */
