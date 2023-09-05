@@ -10,7 +10,7 @@
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	stack_t *stack = NULL;
+	stack_t *stack = NULL, *tmpstack;
 
 	if (argc != 2)
 	{
@@ -31,5 +31,13 @@ int main(int argc, char *argv[])
 
 	find_file(file, &stack);
 
+	while (stack)
+	{
+		tmpstack = stack->next;
+		free(stack);
+		stack = tmpstack;
+	}
+
+	fclose(file);
 	return (EXIT_SUCCESS);
 }
