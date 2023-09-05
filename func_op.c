@@ -9,7 +9,6 @@ void push(stack_t **stack_file, unsigned int counter_line)
 {
 	stack_t *new_node;
 	char *value;
-	int data;
 
 	new_node = malloc(sizeof(stack_t));
 
@@ -21,8 +20,12 @@ void push(stack_t **stack_file, unsigned int counter_line)
 	}
 
 	value = strtok(NULL, " \n\t\r");
-	data = _ferror(value, counter_line);
-	new_node->n = data;
+	if (atoi(value) == 0)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", counter_line);
+		exit(EXIT_FAILURE);
+	}
+	new_node->n = atoi(value);
 	new_node->prev = NULL;
 	if (*stack_file == NULL)
 	{
