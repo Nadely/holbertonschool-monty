@@ -18,7 +18,7 @@ int _ferror(char *value, unsigned int counter_line)
 
 	for (j = 0; value[j] != '\0'; j++)
 	{
-		if (value[j] == 45 || value[j] == 43)
+		if ((value[j] == 45 || value[j] == 43) && value[j + 1] != '\0')
 		{
 			continue;
 		}
