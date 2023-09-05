@@ -18,7 +18,7 @@ int _ferror(char *value, unsigned int counter_line)
 
 	for (j = 0; value[j] != '\0'; j++)
 	{
-		if (value[j] < 48 || value[j] > 57)
+		if ((value[j] < 48 || value[j] > 57) && value [j] != 45)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", counter_line);
 			exit(EXIT_FAILURE);
