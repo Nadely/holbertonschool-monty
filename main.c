@@ -4,7 +4,7 @@ global_t global;
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	stack_t *stack;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{

@@ -26,19 +26,13 @@ void push(stack_t **stack, unsigned int counter_line)
 	}
 	new_node->n = atoi(value);
 	new_node->prev = NULL;
-	if (*stack == NULL)
-	{
-		*stack = new_node;
-		new_node->next = NULL;
-		return;
-	}
-
-	printf("check value = %d\n", new_node->n);
-	(*stack)->prev = new_node;
 	new_node->next = *stack;
+
+	if (*stack != NULL)
+		(*stack)->prev = new_node;
+
 	*stack = new_node;
 
-	free(new_node);
 }
 
 /**
@@ -56,6 +50,7 @@ void pall(stack_t **stack, unsigned int counter_line)
 		return;
 
 	tmp = *stack;
+
 	while (tmp)
 	{
 		printf("%d\n", tmp->n);
