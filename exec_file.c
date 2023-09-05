@@ -3,7 +3,7 @@
 /**
  * find_file - Use the path to know which function use
  *
- * @path: path of file to execute cmd
+ * @file: path of file to execute cmd
  * @stack: header of the stack
  *
  * Return: void

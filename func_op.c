@@ -1,17 +1,16 @@
 #include "monty.h"
 /**
  * push - for push stack
- * @stack_file: header of stack
+ * @stack: header of stack
  * @counter_line: number of line
  * Return : nothing
  */
-void push(stack_t **stack_file, unsigned int counter_line)
+void push(stack_t **stack, unsigned int counter_line)
 {
 	stack_t *new_node;
 	char *value;
 
 	new_node = malloc(sizeof(stack_t));
-
 	if (new_node == NULL)
 	{
 		free(new_node);
@@ -27,17 +26,19 @@ void push(stack_t **stack_file, unsigned int counter_line)
 	}
 	new_node->n = atoi(value);
 	new_node->prev = NULL;
-	if (*stack_file == NULL)
+	if (*stack == NULL)
 	{
-		*stack_file = new_node;
+		*stack = new_node;
 		new_node->next = NULL;
 		return;
 	}
 
 	printf("check value = %d\n", new_node->n);
-	(*stack_file)->prev = new_node;
-	new_node->next = *stack_file;
-	*stack_file = new_node;
+	(*stack)->prev = new_node;
+	new_node->next = *stack;
+	*stack = new_node;
+
+	free(new_node);
 }
 
 /**
@@ -45,16 +46,16 @@ void push(stack_t **stack_file, unsigned int counter_line)
  * @stack: Addres of first element in stack
  * @counter_line: Number of actual line
  */
-void pall(stack_t **stack_file, unsigned int counter_line)
+void pall(stack_t **stack, unsigned int counter_line)
 {
 	stack_t *tmp = NULL;
 
 	(void)counter_line;
 
-	if (!stack_file || !(*stack_file))
+	if (!stack || !(*stack))
 		return;
 
-	tmp = *stack_file;
+	tmp = *stack;
 	while (tmp)
 	{
 		printf("%d\n", tmp->n);
