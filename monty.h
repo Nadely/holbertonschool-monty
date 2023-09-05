@@ -48,7 +48,8 @@ typedef struct var_global
 	char *buffer;
 	FILE *file;
 } global_t;
-extern global_t global;
+
+global_t global;
 
 int main(int argc, char *argv[]);
 void find_file(FILE *file, stack_t **stack);

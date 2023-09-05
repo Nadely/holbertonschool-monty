@@ -7,10 +7,8 @@
  *
  * Return: functions
  */
-
 int main(int argc, char *argv[])
 {
-	global_t global;
 	FILE *file;
 	stack_t *stack = NULL;
 
