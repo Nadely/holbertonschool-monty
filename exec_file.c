@@ -42,6 +42,7 @@ void execute_cmd(stack_t **stack, unsigned int counter_line, char *command)
 	instruction_t functions[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pop", pop},
 		{NULL, NULL}};
 	int j;
 

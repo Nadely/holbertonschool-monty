@@ -59,5 +59,6 @@ int _ferror(char *value, unsigned int counter_line);
 /* Command functions */
 void push(stack_t **stack_file, unsigned int counter_line);
 void pall(stack_t **stack_file, unsigned int counter_line);
+void pop(stack_t **stack, unsigned int counter_line);
 
 #endif /* MONTY_H */
