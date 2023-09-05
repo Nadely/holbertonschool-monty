@@ -25,5 +25,5 @@ int main(int argc, char *argv[])
 
 	find_file(file, &stack);
 
-	return(0);
+	return(EXIT_SUCCESS);
 }

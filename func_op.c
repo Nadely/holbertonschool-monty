@@ -31,8 +31,7 @@ void push(stack_t **stack_file, unsigned int counter_line)
 		return;
 	}
 
-	printf("check value = %d\n", (*stack_file)->n);
-
+	printf("check value = %d\n", new_node->n);
 	(*stack_file)->prev = new_node;
 	new_node->next = *stack_file;
 	*stack_file = new_node;
@@ -43,16 +42,16 @@ void push(stack_t **stack_file, unsigned int counter_line)
  * @stack: Addres of first element in stack
  * @counter_line: Number of actual line
  */
-void pall(stack_t **stack, unsigned int counter_line)
+void pall(stack_t **stack_file, unsigned int counter_line)
 {
 	stack_t *tmp = NULL;
 
 	(void)counter_line;
 
-	if (!stack || !(*stack))
+	if (!stack_file || !(*stack_file))
 		return;
 
-	tmp = *stack;
+	tmp = *stack_file;
 	while (tmp)
 	{
 		printf("%d\n", tmp->n);
