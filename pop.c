@@ -24,4 +24,3 @@ void pop(stack_t **stack, unsigned int counter_line)
 
 	free(tmp);
 }
-

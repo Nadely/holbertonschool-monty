@@ -14,7 +14,7 @@ void push(stack_t **stack, unsigned int counter_line)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
-		free(new_node);
+		/*free(new_node);*/
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
