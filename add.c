@@ -12,6 +12,7 @@
 void add(stack_t **stack, unsigned int counter_line)
 {
 	int result = 0;
+	stack_t *new_node;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
@@ -24,5 +25,20 @@ void add(stack_t **stack, unsigned int counter_line)
 	pop(stack, counter_line);
 	pop(stack, counter_line);
 
-	push(stack, result);
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+
+	new_node->n = result;
+	new_node->prev = NULL;
+	new_node->next = *stack;
+
+	if (*stack != NULL)
+		(*stack)->prev = new_node;
+
+	*stack = new_node;
+
 }
