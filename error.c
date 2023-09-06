@@ -19,6 +19,7 @@ int _ferror(char *value, unsigned int counter_line, stack_t **stack,
 		fprintf(stderr, "L%d: usage: push integer\n", counter_line);
 		freed(stack);
 		free(new_node);
+		free(global.buffer);
 		exit(EXIT_FAILURE);
 	}
 
@@ -33,6 +34,7 @@ int _ferror(char *value, unsigned int counter_line, stack_t **stack,
 			fprintf(stderr, "L%d: usage: push integer\n", counter_line);
 			freed(stack);
 			free(new_node);
+			free(global.buffer);
 			exit(EXIT_FAILURE);
 		}
 	}

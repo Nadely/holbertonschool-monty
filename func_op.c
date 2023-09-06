@@ -28,7 +28,6 @@ void push(stack_t **stack, unsigned int counter_line)
 		(*stack)->prev = new_node;
 
 	*stack = new_node;
-
 }
 
 /**
