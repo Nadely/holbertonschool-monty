@@ -20,6 +20,13 @@ void _div(stack_t **stack, unsigned int counter_line)
 		exit(EXIT_FAILURE);
 	}
 
+	if ((*stack)->next->n == 0)
+	{
+		fprintf(stderr, "L%d: can't div, division by zero\n", counter_line);
+		freed(stack);
+		exit(EXIT_FAILURE);
+	}
+
 	result = (*stack)->n / ((*stack)->next)->n;
 
 	pop(stack, counter_line);
@@ -40,6 +47,4 @@ void _div(stack_t **stack, unsigned int counter_line)
 		(*stack)->prev = new_node;
 
 	*stack = new_node;
-
 }
-
