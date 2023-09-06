@@ -62,5 +62,6 @@ void pall(stack_t **stack_file, unsigned int counter_line);
 void pop(stack_t **stack, unsigned int counter_line);
 void add(stack_t **stack, unsigned int counter_line);
 void nop(stack_t **stack, unsigned int counter_line);
+void pint(stack_t **stack, unsigned int counter_line);
 
 #endif /* MONTY_H */
