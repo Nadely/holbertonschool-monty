@@ -63,5 +63,6 @@ void pop(stack_t **stack, unsigned int counter_line);
 void add(stack_t **stack, unsigned int counter_line);
 void nop(stack_t **stack, unsigned int counter_line);
 void pint(stack_t **stack, unsigned int counter_line);
+void swap(stack_t **stack, unsigned int counter_line);
 
 #endif /* MONTY_H */
