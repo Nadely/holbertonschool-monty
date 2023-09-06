@@ -56,6 +56,5 @@ void freed(stack_t **stack)
 		*stack = tmpstack;
 	}
 
-	free(stack);
 	fclose(global.file);
 }

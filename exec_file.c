@@ -63,6 +63,7 @@ void execute_cmd(stack_t **stack, unsigned int counter_line, char *command)
 	}
 
 	fprintf(stderr, "L%u: unknown instruction %s\n", counter_line, command);
+	free(command);
 	freed(stack);
 	exit(EXIT_FAILURE);
 }

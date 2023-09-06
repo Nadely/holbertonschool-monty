@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 		stack = tmpstack;
 	}
 
-	fclose(global.file);
+	fclose(file);
 
 	return (EXIT_SUCCESS);
 }
