@@ -48,6 +48,7 @@ void execute_cmd(stack_t **stack, unsigned int counter_line, char *command)
 		{"pint", pint},
 		{"swap", swap},
 		{"sub", sub},
+		{"mul", mul},
 		{NULL, NULL}};
 	int j;
 

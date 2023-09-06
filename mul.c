@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * sub - function for subtract two stacks
+ * mul - function for subtract two stacks
  *
  *@stack: double pointer in begin stack
  *@counter_line: count line in file
@@ -9,7 +9,7 @@
  *
  */
 
-void sub(stack_t **stack, unsigned int counter_line)
+void mul(stack_t **stack, unsigned int counter_line)
 {
 	int result = 0;
 	stack_t *new_node;
@@ -20,7 +20,7 @@ void sub(stack_t **stack, unsigned int counter_line)
 		exit(EXIT_FAILURE);
 	}
 
-	result = (*stack)->n - ((*stack)->next)->n;
+	result = (*stack)->n * ((*stack)->next)->n;
 
 	pop(stack, counter_line);
 	pop(stack, counter_line);
