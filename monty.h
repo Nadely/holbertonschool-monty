@@ -69,5 +69,6 @@ void swap(stack_t **stack, unsigned int counter_line);
 void sub(stack_t **stack, unsigned int counter_line);
 void mul(stack_t **stack, unsigned int counter_line);
 /*void div(stack_t **stack, unsigned int counter_line);*/
+void mod(stack_t **stack, unsigned int counter_line);
 
 #endif /* MONTY_H */

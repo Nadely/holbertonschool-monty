@@ -50,6 +50,7 @@ void execute_cmd(stack_t **stack, unsigned int counter_line, char *command)
 		{"sub", sub},
 		{"mul", mul},
 		/*{"div", div},*/
+		{"mod", mod},
 		{NULL, NULL}};
 	int j;
 
