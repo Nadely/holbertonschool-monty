@@ -54,7 +54,9 @@ global_t global;
 int main(int argc, char *argv[]);
 void find_file(FILE *file, stack_t **stack);
 void execute_cmd(stack_t **stack, unsigned int counter_line, char *command);
-int _ferror(char *value, unsigned int counter_line);
+int _ferror(char *value, unsigned int counter_line, stack_t **stack,
+			stack_t *new_node);
+void freed(stack_t **stack);
 
 /* Command functions */
 void push(stack_t **stack_file, unsigned int counter_line);

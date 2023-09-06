@@ -4,15 +4,21 @@
  *
  * @value: the value for push
  * @counter_line: number of line
+ * @stack: header of the stack
+ * @new_node: the new node
+ *
  * Return: int if success
  */
-int _ferror(char *value, unsigned int counter_line)
+int _ferror(char *value, unsigned int counter_line, stack_t **stack,
+			stack_t *new_node)
 {
 	int j;
 
 	if (!value)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", counter_line);
+		freed(stack);
+		free(new_node);
 		exit(EXIT_FAILURE);
 	}
 
@@ -25,9 +31,31 @@ int _ferror(char *value, unsigned int counter_line)
 		else if ((value[j] < 48 || value[j] > 57))
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", counter_line);
+			freed(stack);
+			free(new_node);
 			exit(EXIT_FAILURE);
 		}
 	}
 
 	return (atoi(value));
+}
+
+/**
+ * freed - free the stack and value variable
+ *
+ * @stack: header of stack
+ */
+void freed(stack_t **stack)
+{
+	stack_t *tmpstack;
+
+	while (*stack)
+	{
+		tmpstack = (*stack)->next;
+		free(*stack);
+		*stack = tmpstack;
+	}
+
+	free(stack);
+	fclose(global.file);
 }

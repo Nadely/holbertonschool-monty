@@ -14,13 +14,13 @@ void push(stack_t **stack, unsigned int counter_line)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
-		/*free(new_node);*/
+		free(new_node);
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
 	value = strtok(NULL, " \n\t\r");
-	data = _ferror(value, counter_line);
+	data = _ferror(value, counter_line, stack, new_node);
 	new_node->n = data;
 	new_node->prev = NULL;
 	new_node->next = *stack;
