@@ -20,14 +20,14 @@ void _div(stack_t **stack, unsigned int counter_line)
 		exit(EXIT_FAILURE);
 	}
 
-	if ((*stack)->next->n == 0)
+	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: can't div, division by zero\n", counter_line);
 		freed(stack);
 		exit(EXIT_FAILURE);
 	}
 
-	result = (*stack)->n / ((*stack)->next)->n;
+	result = (*stack)->next->n / (*stack)->n;
 
 	pop(stack, counter_line);
 	pop(stack, counter_line);
