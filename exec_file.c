@@ -53,6 +53,8 @@ void execute_cmd(stack_t **stack, unsigned int counter_line, char *command)
 		{"mod", mod},
 		{"pchar", pchar},
 		{"pstr", pstr},
+		{"rotl", _rotl},
+		{"rotr", _rotr},
 		{NULL, NULL}};
 	int j;
 

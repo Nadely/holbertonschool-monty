@@ -72,5 +72,7 @@ void _div(stack_t **stack, unsigned int counter_line);
 void mod(stack_t **stack, unsigned int counter_line);
 void pchar(stack_t **stack, unsigned int counter_line);
 void pstr(stack_t **stack, unsigned int counter_line);
+void _rotl(stack_t **stack, unsigned int counter_line);
+void _rotr(stack_t **stack, unsigned int counter_line);
 
 #endif /* MONTY_H */

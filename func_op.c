@@ -52,3 +52,61 @@ void pall(stack_t **stack, unsigned int counter_line)
 		tmp = tmp->next;
 	}
 }
+
+/**
+ * _rotl - Pass the top to the bottom of the linked list.
+ * @stack: Head of the double linked list.
+ * @counter_line: Line of execution of command.
+ * Return: Nothing, couse the struct specifications.
+ */
+void _rotl(stack_t **stack, unsigned int counter_line)
+{
+	stack_t *tmp1, *tmp2;
+	(void)counter_line;
+
+	if (!stack || !(*stack) || !(*stack)->next)
+		return;
+
+	tmp1 = *stack;
+	tmp2 = *stack;
+
+	while (tmp1->next != NULL)
+		tmp1 = tmp1->next;
+
+	*stack = tmp2->next;
+	(*stack)->prev = tmp2->prev;
+
+	tmp2->next = tmp1->next;
+	tmp1->next = tmp2;
+	tmp2->prev = tmp1;
+}
+
+/**
+ * _rotr - Pass the top to the bottom of the linked list.
+ * @stack: Head of the double linked list.
+ * @counter_line: Line of execution of command.
+ * Return: Nothing, couse the struct specifications.
+ */
+void _rotr(stack_t **stack, unsigned int counter_line)
+{
+	stack_t *tmp, *final, *tmp_final;
+	(void)counter_line;
+
+	if (!stack || !(*stack) || !(*stack)->next)
+		return;
+
+	tmp = *stack;
+	final = *stack;
+
+	while (final->next != NULL)
+		final = final->next;
+
+	tmp_final = final->prev;
+	tmp_final->next = final->next;
+
+	final->next = tmp;
+	final->prev = tmp->prev;
+	tmp->prev = final;
+
+	*stack = final;
+}
