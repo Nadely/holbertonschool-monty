@@ -22,7 +22,7 @@ void _div(stack_t **stack, unsigned int counter_line)
 
 	if ((*stack)->n == 0)
 	{
-		fprintf(stderr, "L%d: can't div, division by zero\n", counter_line);
+		fprintf(stderr, "L%d: division by zero\n", counter_line);
 		freed(stack);
 		exit(EXIT_FAILURE);
 	}
