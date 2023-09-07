@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * sub - function for subtract two stacks
+ * _div - function for divide two stacks
  *
  *@stack: double pointer in begin stack
  *@counter_line: count line in file
@@ -9,18 +9,25 @@
  *
  */
 
-void sub(stack_t **stack, unsigned int counter_line)
+void _div(stack_t **stack, unsigned int counter_line)
 {
 	int result = 0;
 	stack_t *new_node;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", counter_line);
+		fprintf(stderr, "L%d: can't div, stack too short\n", counter_line);
 		exit(EXIT_FAILURE);
 	}
 
-	result = (*stack)->n - ((*stack)->next)->n;
+	if ((*stack)->next->n == 0)
+	{
+		fprintf(stderr, "L%d: can't div, division by zero\n", counter_line);
+		freed(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	result = (*stack)->n / ((*stack)->next)->n;
 
 	pop(stack, counter_line);
 	pop(stack, counter_line);
@@ -40,6 +47,4 @@ void sub(stack_t **stack, unsigned int counter_line)
 		(*stack)->prev = new_node;
 
 	*stack = new_node;
-
 }
-
