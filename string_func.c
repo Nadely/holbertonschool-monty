@@ -9,7 +9,7 @@ void pchar(stack_t **stack, unsigned int counter_line)
 {
 	if (!stack || !(*stack))
 	{
-		fprintf(stderr, "L%d: can't pchar, stack empty", counter_line);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", counter_line);
 		exit(EXIT_FAILURE);
 	}
 	if ((*stack)->n < 32 || (*stack)->n > 126)
@@ -29,21 +29,25 @@ void pchar(stack_t **stack, unsigned int counter_line)
  */
 void pstr(stack_t **stack, unsigned int counter_line)
 {
+	stack_t *tmp = (*stack);
+
 	if (!stack || !(*stack))
 	{
-		fprintf(stderr, "L%d: can't pstring, stack empty", counter_line);
+		fprintf(stderr, "L%d: can't pstring, stack empty\n", counter_line);
 		exit(EXIT_FAILURE);
 	}
 
-	while ((*stack))
+	while (tmp)
 	{
-		if ((*stack)->n == 0)
-			printf("\n");
+		if (tmp->n == 0)
+			goto exi;
 
-		if ((*stack)->n < 32 || (*stack)->n > 126)
-			exit(EXIT_FAILURE);
+		if (tmp->n < 26 || tmp->n > 126)
+			goto exi;
 
-		printf("%c", (*stack)->n);
-		(*stack) = (*stack)->next;
+		printf("%c", tmp->n);
+		tmp = tmp->next;
 	}
+exi:
+	printf("\n");
 }
